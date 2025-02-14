@@ -34,9 +34,9 @@ Input folder, default phylophlan database, strains should be very closely relate
 Two alternate tools were used. The code is very similar for both. They start in the input folder and output into the parent folder containing that folder. Most of the code is just trimming the names of the files, such as "19_30C_S380_bin.1.fa". They all start with "19_" and most of the suffixes are just from assembly; the only meaningful part is the "30C" in this example, so we trim everything after that. 
 ## PGAP
 ```
-for i in *; do x=${i%_*}; y=${x%_*}; sudo ~/pgap.py -r -o ../$y -g ./$i -s 'Mesorhizobium'; done
+for i in *; do x=${i%_*}; y=${x%_*}; sudo ~/pgap.py -r --taxcheck -o ../$y -g ./$i -s 'Mesorhizobium'; done
 ```
-
+The code for the first batch of samples was originally run without the --taxcheck flag, so I reran the pipeline with --taxcheck-only and the output directory as taxcheck_$y so that it wouldn't have to go through the full annotation process. The taxonomy check gives the ANI compared to the most closely related species, so this flag is optional. 
 
 ## Prokka
 ```
