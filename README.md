@@ -32,6 +32,21 @@ Input folder, default phylophlan database, strains should be very closely relate
 
 # Annotation:
 Two alternate tools were used. The code is very similar for both. They start in the input folder and output into the parent folder containing that folder. Most of the code is just trimming the names of the files, such as "19_30C_S380_bin.1.fa". They all start with "19_" and most of the suffixes are just from assembly; the only meaningful part is the "30C" in this example, so we trim everything after that. 
+
+This can be accomplished prior to annotation (such as for running Phylophlan with neater names) by running
+```
+for i in *.fa; do x=${i%_*}; y=${x%_*}.fa; mv $i $y; done
+```
+
+This iterates through every file with the ".fa" extension. `x=${i%_*}` trims the final underscore and everything after it (in this case "_bin.1.fa"). Then take that value and trim it the same way to remove the "_S380", then add the extension back in, leaving a neat "19_30C.fa" as the final file name. If you want to test this before actually changing the file names, replace `mv $i $y` with `echo $y` to simply print out a list of what the updated names would look like. If you are working with a format other than ".fa", either replace both instances of ".fa" with a different extension like ".fasta" or just omit the extension to iterate through all files regardless of extension. 
+
+To remove the "19_" from the beginning of the file names, the code is very similar. 
+```
+for i in *; do x=${i#*_}; mv $i $x; done
+```
+
+Running this on the original file would change "19_30C_S380_bin.1.fa" to "30C_S380_bin.1.fa"; running this on the shortened file "19_30C.fa" would result in "30C.fa", which Phylophlan would read as just "30C" if ".fa" was specified as the extension.
+
 ## PGAP
 ```
 for i in *; do x=${i%_*}; y=${x%_*}; sudo ~/pgap.py -r --taxcheck -o ../$y -g ./$i -s 'Mesorhizobium'; done
