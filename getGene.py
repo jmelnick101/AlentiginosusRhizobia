@@ -3,13 +3,15 @@ from Bio import SeqIO
 
 #modify the gene to be whatever you are looking for, it doesn't have to be NifH
 gene = "NifH"
+#if your gene has spaces in the name, give it an abbreviation for this lower variable which will be used when naming your output file; for example, "nodulation protein A" can be abbreviated to nodA, and "chitooligosaccharide deacetylase" can be abbreviated to nodB
+genefile = "NifH"
 
 for file in os.listdir('meta_kofamscan'):
     #this section looks for the desired gene with the top score in the Kofamscan file, located in the "meta_kofamscan" folder of my Downloads. 
     #in Kofamscan, genes with a score higher than the threshold will start with an asterisk, so we'll just take the first matching sequence with an asterisk in each file
     #then we take the second column of that with the cut command to obtain the location
     #we pipe that location to a file called "genelocations.txt", overwriting whatever is there
-    os.system('grep {0} {1} | grep "*" | cut -f 2 | head -n 1 > genelocations.txt'.format(gene,"meta_kofamscan/"+file))
+    os.system('grep "{0}" {1} | grep "*" | cut -f 2 | head -n 1 > genelocations.txt'.format(gene,"meta_kofamscan/"+file))
     with open("genelocations.txt", "r") as loc:
         x = loc.read()
         x = x.strip()
@@ -30,6 +32,6 @@ for file in os.listdir('meta_kofamscan'):
             for record in recs:
                 #find the location that matches the location of the gene from the Kofamscan
                 if record.id == x:
-                    with open("metagenome_{}.fasta".format(gene),"a") as m:
+                    with open("metagenome_{}.fasta".format(genefile),"a") as m:
                         #append it to a file called metagenome_{gene}.fasta
                         m.write(">"+name+"\n"+str(record.seq)+"\n")
