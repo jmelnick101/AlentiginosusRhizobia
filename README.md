@@ -111,3 +111,5 @@ RAxML was called for each symbiosis gene using the same settings as we used for 
 /home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m PROTCATLG -T 2 -w /home/grillo/nifHphylo -s /home/grillo/nifHalign.aln -n nifHphylogeny.tre
 ```
 `-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix.
+
+Make sure there aren't any duplicate names in the alignment or else the program won't run. I had to manually rename the second 19_77J as 19_77J_redo.
