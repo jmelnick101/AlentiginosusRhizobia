@@ -1,6 +1,10 @@
 # AlentiginosusRhizobia
 Code to work with genomes for the rhizobia associated with Astragalus lentiginosus.
 
+# Assembly, binning, and taxonomy
+
+See https://github.com/jpod1010/nodule_metagenomics
+
 # Phylophlan: 
 ## Generate a custom configuration file so that a nucleotide genome can be used with this amino acid database:
 ```
@@ -56,4 +60,19 @@ The code for the first batch of samples was originally run without the --taxchec
 ## Prokka
 ```
 for i in *; do x=${i%_*}; y=${x%_*}; prokka -outdir ../$y -prefix $y ./$i; done
+```
+
+# Symbiosis genes
+
+## Extraction
+
+Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with Kofamscan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
+
+Genes were located in Kofamscan and matched to proteins using the code in the getGene.py file on this repository. 
+
+## Alignment
+
+Alignments were produced with MAFFT using the following code (swapping "NifH" for "nodA" or "nodB" as appropriate):
+```
+"/usr/bin/mafft"  --auto --reorder "JoshuaMelnickData/metagenome_NifH.fasta" > "nifHalign.aln"
 ```
