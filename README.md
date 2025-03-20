@@ -34,6 +34,33 @@ phylophlan \
 Flag explanations: 
 Input folder, default phylophlan database, strains should be very closely related due to sharing a genus, used custom configuration file, made it so I could use nucleotides for the sequence, and genome files were .fa instead of .fasta. 
 
+## Bootstrapping
+
+```
+/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/mesorhizobia_phylophlan/test -s mesorhizobia_concatenated.aln -n mesorhizobia_refined.tre
+```
+Phylophlan doesn't bootstrap by default, so I reran the alignment file it produced through RAxML. 
+
+Flag explanations:
+
+`-f a` tells it to run a rapid bootstrap analysis and search for best-scoring ML tree. 
+
+`-x 12345` is the seed for the bootstrapping.
+
+`-p 1989` is the seed for parsimony inferences. I chose the same one as in the Phylophlan configuration file. 
+
+`-# 100` tells it to run 100 bootstraps.
+
+`-m GTRCAT` is the nucleotide substitution model.
+
+`-T 2` tells it to use 2 threads.
+
+`-w` is the output directory.
+
+`-s` is the alignment file. In this case, it is the one produced by Phylophlan.
+
+`-n` is the output file.
+
 # Annotation:
 Two alternate tools were used. The code is very similar for both. They start in the input folder and output into the parent folder containing that folder. Most of the code is just trimming the names of the files, such as "19_30C_S380_bin.1.fa". They all start with "19_" and most of the suffixes are just from assembly; the only meaningful part is the "30C" in this example, so we trim everything after that. 
 
@@ -76,3 +103,11 @@ Alignments were produced with MAFFT using the following code (swapping "NifH" fo
 ```
 "/usr/bin/mafft"  --auto --reorder "JoshuaMelnickData/metagenome_NifH.fasta" > "nifHalign.aln"
 ```
+
+## Phylogenies
+
+RAxML was called for each symbiosis gene using the same settings as we used for bootstrapping the whole phylogeny above. `-w`, `-s`, and `-n` were changed to match the gene names. For example: 
+```
+/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m PROTCATLG -T 2 -w /home/grillo/nifHphylo -s /home/grillo/nifHalign.aln -n nifHphylogeny.tre
+```
+`-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix.
