@@ -66,6 +66,21 @@ Flag explanations:
 
 `-n` is the output file.
 
+# Population structure analysis
+## Rhizobia genetic distance X host genetic distance
+Rather than use host genetic data directly, we can get a sense of whether closely related rhizobia match to closely related hosts by labeling the phylogeny by the variety of Astragalus lentiginosus each rhizobium sample came from. 
+
+This was performed in FigTree. It requires no direct code as it was performed in a GUI. 
+
+## Rhizobia genetic distance X geographic distance
+(Note: since soils and seeds were taken from the same plants, the geographic distance is the same for both the rhizobia and their hosts.)
+
+A Mantel test compares 2 distance matrices to test their correlation. To determine whether closely related bacteria are more likely to be found near each other, genetic distance was compared to geographic distance. (The same kind of test could be used to compare the genetic distance of the rhizobia to the genetic distance of their hosts for a more quantitative answer to the previous question.)
+
+This was tested in R using 2 different packages to compare their conclusions: the `mantel.test` function of "ape" and the `mantel.rtest` function of "ade4". Note that the former takes the data as matrices while the latter takes dist objects. 
+
+See the file `makeMantel.R`.
+
 # Annotation:
 Two alternate tools were used. The code is very similar for both. They start in the input folder and output into the parent folder containing that folder. Most of the code is just trimming the names of the files, such as "19_30C_S380_bin.1.fa". They all start with "19_" and most of the suffixes are just from assembly; the only meaningful part is the "30C" in this example, so we trim everything after that. 
 
@@ -95,7 +110,7 @@ for i in *; do x=${i%_*}; y=${x%_*}; prokka -outdir ../$y -prefix $y ./$i; done
 ```
 
 # Symbiosis genes
-
+Symbiosis genes are known to frequently undergo horizontal gene transfer, and are often transmitted together. We can make tangegrams to visualize how the phylogeny of the symbiosis genes may differ from the overall phylogeny. 
 ## Extraction
 
 Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with Kofamscan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
@@ -118,3 +133,6 @@ RAxML was called for each symbiosis gene using the same settings as we used for 
 `-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix.
 
 Make sure there aren't any duplicate names in the alignment or else the program won't run. I had to manually rename the second 19_77J as 19_77J_redo.
+
+## Construct a tanglegram
+The R package "ape" was used to read the trees and to create the figure. See the file `makeTanglegram.R`.
