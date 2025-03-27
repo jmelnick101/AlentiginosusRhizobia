@@ -1,0 +1,15 @@
+library(seqinr)
+library(ape)
+library(ade4)
+
+#import geographic distance matrix
+geodist <- as.dist(read.table("geodist.txt"))
+
+#import genetic distance matrix from alignment
+phylodist <- dist.alignment(read.alignment("JoshuaPhylophlan/allmesogenomes_phylophlan/allmesogenomes_concatenated.aln",format="fasta"))
+
+#ade4
+mantel.rtest(geodist,phylodist)
+
+#ape
+mantel.test(as.matrix(geodist),as.matrix(phylodist))
