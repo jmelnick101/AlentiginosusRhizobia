@@ -3,7 +3,7 @@ library(ape)
 library(ade4)
 
 #import geographic distance matrix
-geodist <- as.dist(read.table("geodist.txt"))
+geodist <- as.dist(read.table("geodist.txt"),diag=TRUE)
 
 #import genetic distance matrix from alignment
 phylodist <- dist.alignment(read.alignment("JoshuaPhylophlan/allmesogenomes_phylophlan/allmesogenomes_concatenated.aln",format="fasta"))
