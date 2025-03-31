@@ -29,20 +29,21 @@ phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
 ## Run Phylophlan
 ```
 phylophlan \
-    -i mesorhizobia \
+    -i allmesogenomes \
     -d phylophlan \
     --diversity low \
     -f supermatrix_aa2.cfg \
+    --nproc 4 \
     --force_nucleotides \
     --genome_extension '.fa'
 ```
 Flag explanations: 
-Input folder, default phylophlan database, strains should be very closely related due to sharing a genus, used custom configuration file, made it so I could use nucleotides for the sequence, and genome files were .fa instead of .fna (the isolate genomes originally had the .fasta extension and the reference strain originally was .fna, so those were renamed to .fa to match the metagenomes).
+Input folder, default phylophlan database, strains should be very closely related due to sharing a genus, used custom configuration file, used 4 processors, made it so I could use nucleotides for the sequence, and genome files were .fa instead of .fna (the isolate genomes originally had the .fasta extension and the reference strain originally was .fna, so those were renamed to .fa to match the metagenomes). 
 
 ## Bootstrapping
 
 ```
-/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/mesorhizobia_phylophlan/test -s mesorhizobia_concatenated.aln -n mesorhizobia_refined.tre
+/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/allmesogenomes_phylophlan/boot -s allmesogenomes_concatenated.aln -n allmesogenomes_refined.tre
 ```
 Phylophlan doesn't bootstrap by default, so I reran the alignment file it produced through RAxML. 
 
