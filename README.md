@@ -43,7 +43,7 @@ Input folder, default phylophlan database, strains should be very closely relate
 ## Bootstrapping
 
 ```
-/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/allmesogenomes_phylophlan/boot -s allmesogenomes_concatenated.aln -n allmesogenomes_refined.tre
+/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/allmesogenomes_phylophlan/boot -s allmesogenomes_concatenated.aln -n allmesogenomes_boot.tre
 ```
 Phylophlan doesn't bootstrap by default, so I reran the alignment file it produced through RAxML. 
 
