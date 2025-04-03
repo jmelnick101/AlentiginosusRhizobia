@@ -118,6 +118,8 @@ Symbiosis genes were occasionaly missing from annotations, so they were extracte
 
 Genes were located in Kofamscan and matched to proteins using the code in the getGene.py file on this repository. 
 
+I excluded 19-73C due to it containing a mix of Rhizobium and Mesorhizobium, 19-39C due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting nifH even though it detected nodA and nodB. I also later removed the "19" from all names.
+
 ## Alignment
 
 Alignments were produced with MAFFT using the following code (swapping "NifH" for "nodA" or "nodB" as appropriate):
@@ -133,7 +135,7 @@ RAxML was called for each symbiosis gene using the same settings as we used for 
 ```
 `-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix.
 
-Make sure there aren't any duplicate names in the alignment or else the program won't run. I had to manually rename the second 19_77J as 19_77J_redo.
+Make sure there aren't any duplicate names in the alignment or else the program won't run.
 
 ## Construct a tanglegram
 The R package "ape" was used to read the trees and to create the figure. See the file `makeTanglegram.R`.
