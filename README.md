@@ -25,7 +25,7 @@ phylophlan_write_config_file -o supermatrix_aa2.cfg \
 ```
 phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
 ```
-
+Reference strains were also obtained in this way for Mesorhizobium muleiense, M. temperatum, M. mediterraneum, M. wenxiniae, M. opportunistum, and M. alhagi. M. camelthorni and M. onobrychidis were manually downloaded because Phylophlan couldn't recognize those taxonomic labels.
 ## Run Phylophlan
 ```
 phylophlan \
