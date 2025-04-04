@@ -67,6 +67,19 @@ Flag explanations:
 
 `-n` is the output file.
 
+# ANI clusters
+Average nucleotide identity (ANI) is used to determine bacterial species with a threshold of 95%. The tool ANIclustermap uses fastANI to calculate ANI values of the samples and display them as a heatmap. 
+```
+ANIclustermap -i genomesanddownloads/ -o ANIoutput --fig_width 15 --fig_height 15 --overwrite --cmap_ranges 80,85,88,90,92,93,94,95,98,100
+```
+`-i` is the input folder, `-o` is the output folder.
+
+`--fig_width` and `fig_height` change the width and height from the default values of 10 to help fit the large sample number. 
+
+`--overwrite` overwrites the previous run of the program if you need to try it multiple times. 
+
+`--cmap_ranges` makes the heatmap display fixed colors at ANIs of each of those values instead of the usual gradient. This was chosen because there were too many samples to display the actual numbers with `--annotate`, but the gradient was not quantitative enough.
+
 # Population structure analysis
 ## Rhizobia genetic distance X host genetic distance
 Rather than use host genetic data directly, we can get a sense of whether closely related rhizobia match to closely related hosts by labeling the phylogeny by the variety of Astragalus lentiginosus each rhizobium sample came from. 
