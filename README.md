@@ -25,7 +25,7 @@ phylophlan_write_config_file -o supermatrix_aa2.cfg \
 ```
 phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
 ```
-Reference strains were also obtained in this way for Mesorhizobium muleiense, M. temperatum, M. mediterraneum, M. wenxiniae, M. opportunistum, and M. alhagi. M. camelthorni and M. onobrychidis were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for Mesorhizobium sp000503055, Mesorhizobium sp003952365, Mesorhizobium sp004020315, Mesorhizobium sp004020365, Mesorhizobium sp004020645, Mesorhizobium sp004962245, and Mesorhizobium sp004020105 (GCF_016756595.1).
+Reference strains were also obtained in this way for Bradyrhizobium japonicum, Mesorhizobium muleiense, M. temperatum, M. mediterraneum, M. wenxiniae, M. opportunistum, and M. alhagi. M. camelthorni and M. onobrychidis were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for Mesorhizobium sp000503055, Mesorhizobium sp003952365, Mesorhizobium sp004020315, Mesorhizobium sp004020365, Mesorhizobium sp004020645, Mesorhizobium sp004962245, and Mesorhizobium sp004020105 (GCF_016756595.1).
 ## Run Phylophlan
 ```
 phylophlan \
@@ -33,12 +33,12 @@ phylophlan \
     -d phylophlan \
     --diversity low \
     -f supermatrix_aa2.cfg \
-    --nproc 4 \
+    --nproc 16 \
     --force_nucleotides \
     --genome_extension '.fa'
 ```
 Flag explanations: 
-Input folder, default phylophlan database, strains should be very closely related due to sharing a genus, used custom configuration file, used 4 processors, made it so I could use nucleotides for the sequence, and genome files were .fa instead of .fna (the isolate genomes originally had the .fasta extension and the reference strain originally was .fna, so those were renamed to .fa to match the metagenomes). 
+Input folder, default phylophlan database, strains should be very closely related due to sharing a genus, used custom configuration file, used 16 processors, made it so I could use nucleotides for the sequence, and genome files were .fa instead of .fna (the isolate genomes originally had the .fasta extension and the reference strain originally was .fna, so those were renamed to .fa to match the metagenomes). 
 
 ## Bootstrapping
 
