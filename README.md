@@ -106,6 +106,10 @@ for i in *.fa; do x=${i%_*}; y=${x%_*}.fa; mv $i $y; done
 ```
 
 This iterates through every file with the ".fa" extension. `x=${i%_*}` trims the final underscore and everything after it (in this case "_bin.1.fa"). Then take that value and trim it the same way to remove the "_S380", then add the extension back in, leaving a neat "19_30C.fa" as the final file name. If you want to test this before actually changing the file names, replace `mv $i $y` with `echo $y` to simply print out a list of what the updated names would look like. If you are working with a format other than ".fa", either replace both instances of ".fa" with a different extension like ".fasta" or just omit the extension to iterate through all files regardless of extension. 
+For example, replacing all ".fna" extensions with ".fa" can be accomplished with:
+```
+for i in *.fna; do x=${i%fna}fa; mv $i $x; done
+```
 
 To remove the "19_" from the beginning of the file names, the code is very similar. 
 ```
