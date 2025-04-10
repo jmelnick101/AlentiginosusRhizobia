@@ -135,9 +135,11 @@ Symbiosis genes are known to frequently undergo horizontal gene transfer, and ar
 
 Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with Kofamscan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
 
-Genes were located in Kofamscan and matched to proteins using the code in the getGene.py file on this repository. 
+Genes were located in Kofamscan and matched to proteins using the code in the `getGene.py` file on this repository. 
 
 I excluded 19-73C due to it containing a mix of Rhizobium and Mesorhizobium, 19-9A because it was Sinorhizobium, 19-39C due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting nifH even though it detected nodA and nodB. I also later removed the "19" from all names.
+
+Core genes were present in the regular annotations, so a simpler script to get those from Prokka can be found in the `getNucGenesFromProkka.py` file.
 
 ## Alignment
 
