@@ -128,7 +128,10 @@ The code for the first batch of samples was originally run without the --taxchec
 ```
 for i in *; do x=${i%_*}; y=${x%_*}; prokka -outdir ../$y -prefix $y ./$i; done
 ```
-
+I later ran an even shorter version that just removed the file extension since I had manually renamed most of the files at that point. I ran it from a more distant folder, which is why the outdir looks different.
+```
+for i in *; do x=${i%.*}; prokka -outdir ../../JoshuaProkka/finalrun/$x -prefix $x ./$i; done
+```
 # Symbiosis genes
 Symbiosis genes are known to frequently undergo horizontal gene transfer, and are often transmitted together. We can make tangegrams to visualize how the phylogeny of the symbiosis genes may differ from the overall phylogeny. 
 ## Extraction
