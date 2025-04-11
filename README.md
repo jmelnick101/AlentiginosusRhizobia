@@ -61,7 +61,7 @@ Flag explanations:
 
 `-T 2` tells it to use 2 threads.
 
-`-w` is the output directory.
+`-w` is the output directory. Note that this has to be an absolute path, and it can't make the folder itself.
 
 `-s` is the alignment file. In this case, it is the one produced by Phylophlan.
 
