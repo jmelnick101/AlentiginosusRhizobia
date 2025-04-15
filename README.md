@@ -21,6 +21,7 @@ phylophlan_write_config_file -o supermatrix_aa2.cfg \
     --verbose \
     --force_nucleotides
 ```
+The settings are the same as the default `supermatrix_aa.cfg` file Phylophlan would produce except for the `--force_nucleotides` flag.
 ## Obtain a reference strain of Sinorhizobium meliloti to use as an outgroup
 ```
 phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
