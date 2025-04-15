@@ -152,7 +152,7 @@ Alignments were produced with MAFFT using the following code (swapping "NifH" fo
 "/usr/bin/mafft"  --auto --reorder "JoshuaMelnickData/metagenome_NifH.fasta" > "nifHalign.aln"
 ```
 
-## Phylogenies
+## Phylogenies (currently unused)
 
 RAxML was called for each symbiosis gene using the same settings as we used for bootstrapping the whole phylogeny above. `-w`, `-s`, and `-n` were changed to match the gene names. For example: 
 ```
@@ -161,6 +161,15 @@ RAxML was called for each symbiosis gene using the same settings as we used for 
 `-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix. If you use `getNucGenesFromProkka.py`, you will have nucleotides, so in that case stick with `-m GTRCAT`.
 
 Make sure there aren't any duplicate names in the alignment or else the program won't run.
+
+## Concatenate alignments
+Put the 3 gene alignments in a shared folder, in this case called `genealignments`.
+
+Call IQTree, but instead of using one alignment with the `-s` flag, just call their shared folder.
+
+```
+../Downloads/iqtree-3.0.0-Linux-intel/bin/iqtree3 -s ../genealignments
+```
 
 ## Construct a tanglegram
 The R package "ape" was used to read the trees and to create the figure. See the file `makeTanglegram.R`.
