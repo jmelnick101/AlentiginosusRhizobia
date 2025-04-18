@@ -165,10 +165,10 @@ Make sure there aren't any duplicate names in the alignment or else the program 
 ## Concatenate alignments
 Put the 3 gene alignments in a shared folder, in this case called `genealignments`.
 
-Call IQTree, but instead of using one alignment with the `-s` flag, just call their shared folder.
+Call IQTree, but instead of using one alignment with the `-s` flag, just call their shared folder. We will do regular bootstrapping.
 
 ```
-../Downloads/iqtree-3.0.0-Linux-intel/bin/iqtree3 -s ../genealignments
+~/Downloads/iqtree-3.0.0-Linux-intel/bin/iqtree3 -s ~/genealignments -b 100
 ```
 
 ## Construct a tanglegram
