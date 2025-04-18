@@ -1,11 +1,12 @@
 # AlentiginosusRhizobia
-Code to work with genomes for the rhizobia associated with Astragalus lentiginosus.
+Code to work with genomes for the rhizobia associated with _Astragalus lentiginosus_.
 
 # Assembly, binning, and taxonomy
 
 See https://github.com/jpod1010/nodule_metagenomics
 
-# Phylophlan: 
+# PhyloPhlAn: 
+To download PhyloPhlAn, go to https://github.com/biobakery/phylophlan
 ## Generate a custom configuration file so that a nucleotide genome can be used with this amino acid database:
 ```
 phylophlan_write_config_file -o supermatrix_aa2.cfg \
@@ -26,8 +27,8 @@ The settings are the same as the default `supermatrix_aa.cfg` file Phylophlan wo
 ```
 phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
 ```
-Reference strains were also obtained in this way for Bradyrhizobium japonicum, Mesorhizobium muleiense, M. temperatum, M. mediterraneum, M. wenxiniae, M. opportunistum, and M. alhagi. M. camelthorni and M. onobrychidis were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for Mesorhizobium sp000503055, Mesorhizobium sp003952365, Mesorhizobium sp004020315, Mesorhizobium sp004020365, Mesorhizobium sp004020645, Mesorhizobium sp004962245, and Mesorhizobium sp004020105 (GCF_016756595.1).
-## Run Phylophlan
+Reference strains were also obtained in this way for _Bradyrhizobium japonicum_, _Mesorhizobium muleiense_, _M. temperatum_, _M. mediterraneum_, _M. wenxiniae_, _M. opportunistum_, and _M. alhagi_. _M. camelthorni_ and _M. onobrychidis_ were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for _Mesorhizobium sp000503055_, _Mesorhizobium sp003952365_, _Mesorhizobium sp004020315_, _Mesorhizobium sp004020365_, _Mesorhizobium sp004020645_, _Mesorhizobium sp004962245_, and _Mesorhizobium sp004020105_ (GCF_016756595.1).
+## Run PhyloPhlAn
 ```
 phylophlan \
     -i allmesogenomes \
@@ -46,7 +47,7 @@ Input folder, default phylophlan database, strains should be very closely relate
 ```
 /home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/JoshuaPhylophlan/allmesogenomes_phylophlan/boot -s allmesogenomes_concatenated.aln -n allmesogenomes_boot.tre
 ```
-Phylophlan doesn't bootstrap by default, so I reran the alignment file it produced through RAxML. 
+PhyloPhlAn doesn't bootstrap by default, so I reran the alignment file it produced through RAxML. 
 
 Flag explanations:
 
@@ -69,7 +70,7 @@ Flag explanations:
 `-n` is the output file.
 
 # ANI clusters
-Average nucleotide identity (ANI) is used to determine bacterial species with a threshold of 95%. The tool ANIclustermap uses fastANI to calculate ANI values of the samples and display them as a heatmap. 
+Average nucleotide identity (ANI) is used to determine bacterial species with a threshold of 95%. The tool [ANIclustermap](https://github.com/moshi4/ANIclustermap) uses fastANI to calculate ANI values of the samples and display them as a heatmap. 
 ```
 ANIclustermap -i genomesanddownloads/ -o ANIoutput --fig_width 15 --fig_height 15 --overwrite --cmap_ranges 80,85,88,90,92,93,94,95,98,100
 ```
@@ -83,9 +84,9 @@ ANIclustermap -i genomesanddownloads/ -o ANIoutput --fig_width 15 --fig_height 1
 
 # Population structure analysis
 ## Rhizobia genetic distance X host genetic distance
-Rather than use host genetic data directly, we can get a sense of whether closely related rhizobia match to closely related hosts by labeling the phylogeny by the variety of Astragalus lentiginosus each rhizobium sample came from. 
+Rather than use host genetic data directly, we can get a sense of whether closely related rhizobia match to closely related hosts by labeling the phylogeny by the variety of _Astragalus lentiginosus_ each rhizobium sample came from. 
 
-This was performed in FigTree. It requires no direct code as it was performed in a GUI. 
+This was performed in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/). It requires no direct code as it was performed in a GUI. 
 
 ## Rhizobia genetic distance X geographic distance
 (Note: since soils and seeds were taken from the same plants, the geographic distance is the same for both the rhizobia and their hosts.)
@@ -93,6 +94,8 @@ This was performed in FigTree. It requires no direct code as it was performed in
 A Mantel test compares 2 distance matrices to test their correlation. To determine whether closely related bacteria are more likely to be found near each other, genetic distance was compared to geographic distance. (The same kind of test could be used to compare the genetic distance of the rhizobia to the genetic distance of their hosts for a more quantitative answer to the previous question.)
 
 This was tested in R using 2 different packages to compare their conclusions: the `mantel.test` function of "ape" and the `mantel.rtest` function of "ade4". Note that the former takes the data as matrices while the latter takes dist objects. 
+
+The geographic distance matrix was created using [Geographic Distance Matrix Generator](https://biodiversityinformatics.amnh.org/open_source/gdmg/).
 
 Make sure that your input matrices are in the same order and have the same names for each entry. For some reason, the geographic distance matrix produced by GeographicDistanceMatrixGenerator listed 43U_bin.1 and 43U_bin.2 as having a distance of NaN instead of 0.00, so that had to be manually edited. 
 
@@ -117,15 +120,17 @@ To remove the "19_" from the beginning of the file names, the code is very simil
 for i in *; do x=${i#*_}; mv $i $x; done
 ```
 
-Running this on the original file would change "19_30C_S380_bin.1.fa" to "30C_S380_bin.1.fa"; running this on the shortened file "19_30C.fa" would result in "30C.fa", which Phylophlan would read as just "30C" if ".fa" was specified as the extension.
+Running this on the original file would change "19_30C_S380_bin.1.fa" to "30C_S380_bin.1.fa"; running this on the shortened file "19_30C.fa" would result in "30C.fa", which PhyloPhlAn would read as just "30C" if ".fa" was specified as the extension.
 
 ## PGAP
+To download PGAP, go to https://github.com/ncbi/pgap
 ```
 for i in *; do x=${i%_*}; y=${x%_*}; sudo ~/pgap.py -r --taxcheck -o ../$y -g ./$i -s 'Mesorhizobium'; done
 ```
 The code for the first batch of samples was originally run without the --taxcheck flag, so I reran the pipeline with --taxcheck-only and the output directory as taxcheck_$y so that it wouldn't have to go through the full annotation process. The taxonomy check gives the ANI compared to the most closely related species, so this flag is optional. 
 
 ## Prokka
+To download Prokka, go to https://github.com/tseemann/prokka
 ```
 for i in *; do x=${i%_*}; y=${x%_*}; prokka -outdir ../$y -prefix $y ./$i; done
 ```
@@ -141,7 +146,7 @@ Symbiosis genes were occasionaly missing from annotations, so they were extracte
 
 Genes were located in Kofamscan and matched to proteins using the code in the `getGene.py` file on this repository. 
 
-I excluded 19-73C due to it containing a mix of Rhizobium and Mesorhizobium, 19-9A because it was Sinorhizobium, 19-39C due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting nifH even though it detected nodA and nodB. I also later removed the "19" from all names.
+I excluded 19-73C due to it containing a mix of _Rhizobium_ and _Mesorhizobium_, 19-9A because it was _Sinorhizobium_, 19-39C due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting _nifH_ even though it detected _nodA_ and _nodB_. I also later removed the "19" from all names.
 
 Core genes were present in the regular annotations, so a simpler script to get those from Prokka can be found in the `getNucGenesFromProkka.py` file.
 
@@ -165,7 +170,7 @@ Make sure there aren't any duplicate names in the alignment or else the program 
 ## Concatenate alignments
 Put the 3 gene alignments in a shared folder, in this case called `genealignments`.
 
-Call IQTree, but instead of using one alignment with the `-s` flag, just call their shared folder. We will do regular bootstrapping.
+Call [IQTree](http://www.iqtree.org/), but instead of using one alignment with the `-s` flag, just call their shared folder. We will do regular bootstrapping.
 
 ```
 ~/Downloads/iqtree-3.0.0-Linux-intel/bin/iqtree3 -s ~/genealignments -b 100
