@@ -88,6 +88,8 @@ Rather than use host genetic data directly, we can get a sense of whether closel
 
 This was performed in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/). It requires no direct code as it was performed in a GUI. 
 
+A Mantel test was also performed to determine if rhizobia genetic distance was correlated with sharing the same host variety. To get the variety distance matrix (where samples of the same variety have a distance of 0 and samples of different varieties have a distance of 1), run the `makevarietymatrix.py` Python script on the provided file `varietysort.txt` (samples are in the order that matches how the alignment ordered them). The Mantel test was performed with the `mantel.rtest` function of the R package "ade4". See `makeMantel.r`.
+
 ## Rhizobia genetic distance X geographic distance
 (Note: since soils and seeds were taken from the same plants, the geographic distance is the same for both the rhizobia and their hosts.)
 
@@ -95,7 +97,7 @@ A Mantel test compares 2 distance matrices to test their correlation. To determi
 
 This was tested in R using 2 different packages to compare their conclusions: the `mantel.test` function of "ape" and the `mantel.rtest` function of "ade4". Note that the former takes the data as matrices while the latter takes dist objects. 
 
-The geographic distance matrix was created using [Geographic Distance Matrix Generator](https://biodiversityinformatics.amnh.org/open_source/gdmg/).
+The geographic distance matrix was created using [Geographic Distance Matrix Generator](https://biodiversityinformatics.amnh.org/open_source/gdmg/). You can replicate this by running the program on the provided file `sitesFinal.txt` and naming the resulting matrix `GeoDistMatFinal.txt`. Select the `Full NxN Matrix` option.
 
 Make sure that your input matrices are in the same order and have the same names for each entry. For some reason, the geographic distance matrix produced by GeographicDistanceMatrixGenerator listed 43U_bin.1 and 43U_bin.2 as having a distance of NaN instead of 0.00, so that had to be manually edited. 
 
