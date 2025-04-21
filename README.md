@@ -88,14 +88,17 @@ Rather than use host genetic data directly, we can get a sense of whether closel
 
 This was performed in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/). It requires no direct code as it was performed in a GUI. 
 
-A Mantel test was also performed to determine if rhizobia genetic distance was correlated with sharing the same host variety. To get the variety distance matrix (where samples of the same variety have a distance of 0 and samples of different varieties have a distance of 1), run the `makevarietymatrix.py` Python script on the provided file `varietysort.txt` (samples are in the order that matches how the alignment ordered them). The Mantel test was performed with the `mantel.rtest` function of the R package "ade4". See `makeMantel.r`.
+A Mantel test was also performed to determine if rhizobia genetic distance was correlated with sharing the same host variety. To get the variety distance matrix (where samples of the same variety have a distance of 0 and samples of different varieties have a distance of 1), run the `makevarietymatrix.py` Python script on the provided file `varietysort.txt` (samples are in the order that matches how the alignment ordered them). 
+The Mantel test was performed with the `mantel` function of the R package "Vegan", as well as a partial Mantel test controlling for geographic distance. 
+There is also unused, commented code for the `mantel.rtest` function of the R package "ade4". See `makeMantel.r`.
 
 ## Rhizobia genetic distance X geographic distance
 (Note: since soils and seeds were taken from the same plants, the geographic distance is the same for both the rhizobia and their hosts.)
 
 A Mantel test compares 2 distance matrices to test their correlation. To determine whether closely related bacteria are more likely to be found near each other, genetic distance was compared to geographic distance. (The same kind of test could be used to compare the genetic distance of the rhizobia to the genetic distance of their hosts for a more quantitative answer to the previous question.)
 
-This was tested in R using 2 different packages to compare their conclusions: the `mantel.test` function of "ape" and the `mantel.rtest` function of "ade4". Note that the former takes the data as matrices while the latter takes dist objects. 
+This was tested in R using the `mantel` function of "Vegan", as well as the `mantel.partial` function to control for variety.
+There is also unused, commented code using 2 other packages: the `mantel.test` function of "ape" and the `mantel.rtest` function of "ade4". Note that the former takes the data as matrices while the latter takes dist objects. 
 
 The geographic distance matrix was created using [Geographic Distance Matrix Generator](https://biodiversityinformatics.amnh.org/open_source/gdmg/). You can replicate this by running the program on the provided file `sitesFinal.txt` and naming the resulting matrix `GeoDistMatFinal.txt`. Select the `Full NxN Matrix` option.
 
