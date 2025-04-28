@@ -86,7 +86,7 @@ ANIclustermap -i genomesanddownloads/ -o ANIoutput --fig_width 15 --fig_height 1
 ## Rhizobia genetic distance X host genetic distance
 Rather than use host genetic data directly, we can get a sense of whether closely related rhizobia match to closely related hosts by labeling the phylogeny by the variety of _Astragalus lentiginosus_ each rhizobium sample came from. 
 
-This was performed in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/). It requires no direct code as it was performed in a GUI. 
+This was performed in [FigTree](https://tree.bio.ed.ac.uk/software/figtree/). It requires no direct code as it was performed in a GUI. I imported annotations from the file `treeannotationsfull3.txt`. I rerooted the tree at the _Sinorhizobium_ and _Bradyrhizobium_ clade since it is supposed to be an outgroup but seemed to nest with the _Mesorhizobium_ clade. 
 
 A Mantel test was also performed to determine if rhizobia genetic distance was correlated with sharing the same host variety. To get the variety distance matrix (where samples of the same variety have a distance of 0 and samples of different varieties have a distance of 1), run the `makevarietymatrix.py` Python script on the provided file `varietysort.txt` (samples are in the order that matches how the alignment ordered them). 
 The Mantel test was performed with the `mantel` function of the R package "Vegan", as well as a partial Mantel test controlling for geographic distance. 
