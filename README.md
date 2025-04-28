@@ -106,6 +106,11 @@ Make sure that your input matrices are in the same order and have the same names
 
 See the file `makeMantel.R`.
 
+## Permanova
+A permanova was performed to further test the significance of geographic distance and variety using the `adonis2` function of "Vegan". These steps have also been added to `makeMantel.R`. 
+
+Note that this step takes significantly longer than the Mantel test, so you may want to comment this section out if you don't need it. 
+
 # Annotation:
 Two alternate tools were used. The code is very similar for both. They start in the input folder and output into the parent folder containing that folder. Most of the code is just trimming the names of the files, such as "19_30C_S380_bin.1.fa". They all start with "19_" and most of the suffixes are just from assembly; the only meaningful part is the "30C" in this example, so we trim everything after that. 
 
