@@ -22,6 +22,12 @@ mantel.partial(phylodist,variety,geodist) #genetic distance by variety, controll
 #mantel(geodist,variety) #geographic distance by variety (not the focus of this study)
 #mantel.partial(geodist,variety,phylodist) #geographic distance by variety, controlling for genetic distance
 
+#permanovas
+#v <- read.table("varietysort.txt",col.names = c("sample","varietyname"))
+vxg <- adonis2(as.vector(phylodist) ~ as.vector(variety) * as.vector(geodist), by="terms")
+vxg #variety first, geography second
+gxv <- adonis2(as.vector(phylodist) ~ as.vector(geodist) * as.vector(variety), by="terms")
+gxv #geography first, variety second
 
 #ade4
 #mantel.rtest(phylodist,geodist) #genetic distance by geographic distance
