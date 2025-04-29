@@ -158,6 +158,8 @@ Genes were located in Kofamscan and matched to proteins using the code in the `g
 
 I excluded 19-73C due to it containing a mix of _Rhizobium_ and _Mesorhizobium_, 19-9A because it was _Sinorhizobium_, 19-39C, 19-70G, and 19-81J due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting _nifH_ even though it detected _nodA_ and _nodB_. I also later removed the "19" from all names.
 
+I also excluded 19-1F bin 1 and 2, 19-9F bin 1 and 2, and 19-43U bin 1 and 2 and reran the phylogeny so that the samples used in the symbiosis gene trees (which don't take bins into account) would match the phylogeny. 
+
 Core genes were present in the regular annotations, so a simpler script to get those from Prokka can be found in the `getNucGenesFromProkka.py` file.
 
 ## Alignment
