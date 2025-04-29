@@ -169,13 +169,13 @@ Alignments were produced with MAFFT using the following code (swapping "NifH" fo
 "/usr/bin/mafft"  --auto --reorder "JoshuaMelnickData/metagenome_NifH.fasta" > "nifHalign.aln"
 ```
 
-## Phylogenies (currently unused)
+## Phylogenies
 
 RAxML was called for each symbiosis gene using the same settings as we used for bootstrapping the whole phylogeny above. `-w`, `-s`, and `-n` were changed to match the gene names. For example: 
 ```
 /home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m PROTCATLG -T 2 -w /home/grillo/nifHphylo -s /home/grillo/nifHalign.aln -n nifHphylogeny.tre
 ```
-`-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix. If you use `getNucGenesFromProkka.py`, you will have nucleotides, so in that case stick with `-m GTRCAT`.
+`-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix. If you use `getNucGenesFromProkka.py` or the Prodigal method, you will have nucleotides, so in that case stick with `-m GTRCAT`.
 
 Make sure there aren't any duplicate names in the alignment or else the program won't run.
 
