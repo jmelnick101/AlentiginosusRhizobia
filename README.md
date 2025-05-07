@@ -195,7 +195,7 @@ The R package "ape" was used to read the trees and to create the figure. See the
 The similarity of two phylogenetic trees can be calculated by finding their Robinson-Foulds distance. This was done using [ete3](https://etetoolkit.org/documentation/ete-compare/).
 
 ```
-ete3 compare -t genealignments/iqtestfinal/genealignments.treefile -r JoshuaPhylophlan/genomesnobins_phylophlan/RAxML_bestTree.genomesnobins_refined.tre --unrooted
+ete3 compare -t genealignments/iqtestfinal/genealignments.treefile -r JoshuaPhylophlan/genomesnobins_phylophlan/boot/RAxML_bipartitions.genomesnobins_boot.tre --unrooted
 ```
 `-t` is the tree to compare, in this case the concatenated symbiosis gene tree.
 `-r` is the whole genome phylogeny, which is used as the reference.
