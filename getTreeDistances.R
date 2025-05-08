@@ -31,7 +31,9 @@ RobinsonFoulds(nodB,wgs,normalize=TRUE)
 RobinsonFoulds(nifH,wgs,normalize=TRUE)
 
 #tree distance
-TreeDistance(con,wgs)
+TreeDistance(con,wgs) #normalized
+ClusteringInfoDistance(con,wgs) #unnormalized
+ExpectedVariation(con,wgs) #compare unnormalized to bottom one
 
 TreeDistance(nodA,con)
 TreeDistance(nodB,con)
