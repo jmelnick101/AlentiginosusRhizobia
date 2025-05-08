@@ -10,6 +10,9 @@ for n in range(len(names)):
 #get list of sites in the old order with their coordinates
 with open("sitesFinal.txt", "r") as s:
     old = s.readlines()
+#or for reordering the variety file, do this instead
+#with open("varietysort.txt", "r") as s:
+    #old = s.readlines()
 
 #create new file with the sites reordered to match the genetic order
 with open("newOrder.txt", "a") as x:
