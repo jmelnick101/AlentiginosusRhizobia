@@ -194,6 +194,7 @@ Call [IQTree](http://www.iqtree.org/), but instead of using one alignment with t
 The R package "ape" was used to read the trees and to create the figure. See the file `makeTanglegram.R`.
 
 ## Robinson-Foulds distance
+### ete3 (currently unused)
 The similarity of two phylogenetic trees can be calculated by finding their Robinson-Foulds distance. This was done using [ete3](https://etetoolkit.org/documentation/ete-compare/).
 
 ```
@@ -201,3 +202,8 @@ ete3 compare -t genealignments/iqtestfinal/genealignments.treefile -r JoshuaPhyl
 ```
 `-t` is the tree to compare, in this case the concatenated symbiosis gene tree.
 `-r` is the whole genome phylogeny, which is used as the reference.
+
+### TreeDistance
+The normalized Robinson-Foulds distance was also calculated with the R package "TreeDist" using the `RobinsonFoulds` function. Because nRF values were so high, I also used this package's unique metric, generalized Robinson-Foulds, found in the `TreeDistance` (or `ClusteringInfoDistance`) function, which provides a value more in line with my expectations.
+
+See the R script `getTreeDistances.R`.
