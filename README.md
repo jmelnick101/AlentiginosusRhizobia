@@ -102,9 +102,11 @@ There is also unused, commented code using 2 other packages: the `mantel.test` f
 
 The geographic distance matrix was created using [Geographic Distance Matrix Generator](https://biodiversityinformatics.amnh.org/open_source/gdmg/). You can replicate this by running the program on the provided file `sitesFinal.txt` and naming the resulting matrix `GeoDistMatFinal.txt`. Select the `Full NxN Matrix` option.
 
+See the file `makeMantel.R`.
+
 Make sure that your input matrices are in the same order and have the same names for each entry. For some reason, the geographic distance matrix produced by GeographicDistanceMatrixGenerator listed 43U_bin.1 and 43U_bin.2 as having a distance of NaN instead of 0.00, so that had to be manually edited. 
 
-See the file `makeMantel.R`.
+To reorder your geographic sites (prior to putting them through GeographicDistanceMatrixGenerator!) to match the order of your genetic data, use the script found in `reorder.py`. For the input, read the genetic data into R from your alignment or tree using the appropriate lines in `makeMantel.R` but don't run the whole script. Then assign the row names (which are the order you want) to a variable, let's call it `o`. Write it to a file with `write.table(o, file="order.txt", row.names=FALSE)`. Then go into `order.txt` and remove the first line ("x"), and remove all the quotation marks with a simple search-and-replace. Finally, run `reorder.py`.
 
 ## Permanova
 A permanova was performed to further test the significance of geographic distance and variety using the `adonis2` function of "Vegan". These steps have also been added to `makeMantel.R`. 
