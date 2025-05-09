@@ -175,20 +175,25 @@ Alignments were produced with MAFFT using the following code (swapping "NifH" fo
 
 RAxML was called for each symbiosis gene using the same settings as we used for bootstrapping the whole phylogeny above. `-w`, `-s`, and `-n` were changed to match the gene names. For example: 
 ```
-/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m PROTCATLG -T 2 -w /home/grillo/nifHphylo -s /home/grillo/nifHalign.aln -n nifHphylogeny.tre
+/home/grillo/miniconda3/envs/phylophlan/bin/raxmlHPC-PTHREADS-SSE3 -f a -x 12345 -p 1989 -# 100 -m GTRCAT -T 2 -w /home/grillo/nifHphylo -s /home/grillo/nifHalign.aln -n nifHphylogeny.tre
 ```
-`-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix. If you use `getNucGenesFromProkka.py` or the Prodigal method, you will have nucleotides, so in that case stick with `-m GTRCAT`.
+`-m` has also been changed to fit an amino acid substitution model; I selected the one that Phylophlan would use by default for an amino acid supermatrix. If you use amino acids, replace `-m GTRCAT` with `-m PROTCATLG`. If you use `getNucGenesFromProkka.py` or the Prodigal method, you will have nucleotides, so in that case stick with `-m GTRCAT`.
 
 Make sure there aren't any duplicate names in the alignment or else the program won't run.
 
 ## Concatenate alignments
 Put the 3 gene alignments in a shared folder, in this case called `genealignments`.
 
+### IQTree
+_This method is unused; it outputs a useful tree, but it doesn't provide the actual concatenated alignment._
+
 Call [IQTree](http://www.iqtree.org/), but instead of using one alignment with the `-s` flag, just call their shared folder. We will do regular bootstrapping.
 
 ```
 ~/Downloads/iqtree-3.0.0-Linux-intel/bin/iqtree3 -s ~/genealignments -b 100
 ```
+### MEGA
+Convert the .aln files to .fasta files by renaming them. Make sure they are all in one folder that contains no other files. [Concatenate the alignments](https://www.megasoftware.net/web_help_10/Concatenation_Utility.htm) with [MEGA](https://www.megasoftware.net/).
 
 ## Construct a tanglegram
 The R package "ape" was used to read the trees and to create the figure. See the file `makeTanglegram.R`.
