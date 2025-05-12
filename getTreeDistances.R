@@ -7,7 +7,8 @@ nodA <- read.tree("nodAphylo/RAxML_bestTree.nodAphylogeny.tre")
 nodB <- read.tree("nodBphylo/RAxML_bestTree.nodBphylogeny.tre")
 
 #concatenated nifH, nodA, and nodB trees
-con <- read.tree("genealignments/iqtestfinal/genealignments.treefile")
+#con <- read.tree("genealignments/iqtestfinal/genealignments.treefile")
+con <- read.tree("concatPhylo/RAxML_bipartitions.concatPhylogeny.tre")
 #housekeeping gene
 #recA <- read.tree("recAphylo/RAxML_bestTree.RecAphylogeny.tre")
 
