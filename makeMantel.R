@@ -29,12 +29,19 @@ mantel.partial(phylodist,variety,geodist) #genetic distance by variety, controll
 #mantel.partial(geodist,variety,phylodist) #geographic distance by variety, controlling for genetic distance
 
 #permanovas
-#v <- read.table("varietysort.txt",col.names = c("sample","varietyname")) #full 104 genomes
+v <- read.table("varietysort.txt",col.names = c("sample","varietyname")) #full 104 genomes
 #v <- read.table("newvarOrder.txt",col.names = c("sample","varietyname")) #concatenated symbiosis genes from 77 genomes with strains and multiple bins from the same metagenome removed
 #v <- read.table("newshortvarOrder.txt",col.names = c("sample","varietyname")) #full genomes from 77 genomes with strains and multiple bins from the same metagenome removed
-vxg <- adonis2(as.vector(phylodist) ~ as.vector(variety) * as.vector(geodist), by="terms")
+
+geodistpca <- cmdscale(geodist,k=2)
+samples <- attr(phylodist, "Labels")
+metadata <- data.frame(sample = samples, geo1 = geodistpca[, 1], geo2 = geodistpca[, 2], host = v$varietyname)
+
+vxg <- adonis2(phylodist ~ host * (geo1 + geo2), data=metadata, by="terms")
+#vxg <- adonis2(as.vector(phylodist) ~ as.vector(variety) * as.vector(geodist), by="terms")
 vxg #variety first, geography second
-gxv <- adonis2(as.vector(phylodist) ~ as.vector(geodist) * as.vector(variety), by="terms")
+gxv <- adonis2(phylodist ~ (geo1 + geo2) * host, data=metadata, by="terms")
+#gxv <- adonis2(as.vector(phylodist) ~ as.vector(geodist) * as.vector(variety), by="terms")
 gxv #geography first, variety second
 
 #ade4
