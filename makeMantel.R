@@ -29,7 +29,9 @@ mantel.partial(phylodist,variety,geodist) #genetic distance by variety, controll
 #mantel.partial(geodist,variety,phylodist) #geographic distance by variety, controlling for genetic distance
 
 #permanovas
-#v <- read.table("varietysort.txt",col.names = c("sample","varietyname"))
+#v <- read.table("varietysort.txt",col.names = c("sample","varietyname")) #full 104 genomes
+#v <- read.table("newvarOrder.txt",col.names = c("sample","varietyname")) #concatenated symbiosis genes from 77 genomes with strains and multiple bins from the same metagenome removed
+#v <- read.table("newshortvarOrder.txt",col.names = c("sample","varietyname")) #full genomes from 77 genomes with strains and multiple bins from the same metagenome removed
 vxg <- adonis2(as.vector(phylodist) ~ as.vector(variety) * as.vector(geodist), by="terms")
 vxg #variety first, geography second
 gxv <- adonis2(as.vector(phylodist) ~ as.vector(geodist) * as.vector(variety), by="terms")
