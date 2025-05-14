@@ -151,7 +151,7 @@ I later ran an even shorter version that just removed the file extension since I
 for i in *; do x=${i%.*}; prokka -outdir ../../JoshuaProkka/finalrun/$x -prefix $x ./$i; done
 ```
 # Symbiosis genes
-Symbiosis genes are known to frequently undergo horizontal gene transfer, and are often transmitted together. We can make tangegrams to visualize how the phylogeny of the symbiosis genes may differ from the overall phylogeny. 
+Symbiosis genes are known to frequently undergo horizontal gene transfer, and are often transmitted together. We can make tanglegrams to visualize how the phylogeny of the symbiosis genes may differ from the overall phylogeny. 
 ## Extraction
 
 Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with Kofamscan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
