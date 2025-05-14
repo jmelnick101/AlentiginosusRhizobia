@@ -27,7 +27,7 @@ The settings are the same as the default `supermatrix_aa.cfg` file Phylophlan wo
 ```
 phylophlan_get_reference -g s__Sinorhizobium_meliloti -o SMeliloti -n 1
 ```
-Reference strains were also obtained in this way for _Bradyrhizobium japonicum_, _Mesorhizobium muleiense_, _M. temperatum_, _M. mediterraneum_, _M. wenxiniae_, _M. opportunistum_, and _M. alhagi_. _M. camelthorni_ and _M. onobrychidis_ were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for _Mesorhizobium sp000503055_, _Mesorhizobium sp003952365_, _Mesorhizobium sp004020315_, _Mesorhizobium sp004020365_, _Mesorhizobium sp004020645_, _Mesorhizobium sp004962245_, and _Mesorhizobium sp004020105_ (GCF_016756595.1).
+Reference strains were also obtained in this way for _Bradyrhizobium japonicum_, _Mesorhizobium muleiense_, _M. temperatum_, _M. mediterraneum_, _M. wenxiniae_, _M. opportunistum_, and _M. alhagi_. _M. camelthorni_ and _M. onobrychidis_ were manually downloaded because Phylophlan couldn't recognize those taxonomic labels. Additional genomes were manually downloaded for _Mesorhizobium sp000503055_, _Mesorhizobium sp003952365_, _Mesorhizobium sp004020315_, _Mesorhizobium sp004020365_, _Mesorhizobium sp004020645_, _Mesorhizobium sp004962245_, _Mesorhizobium sp004020105_ (GCF_016756595.1), and _Mesorhizobium spAaZ16_ (GCF_043769475.1).
 ## Run PhyloPhlAn
 ```
 phylophlan \
