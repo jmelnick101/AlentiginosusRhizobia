@@ -212,3 +212,8 @@ ete3 compare -t genealignments/iqtestfinal/genealignments.treefile -r JoshuaPhyl
 The normalized Robinson-Foulds distance was also calculated with the R package "TreeDist" using the `RobinsonFoulds` function. Because nRF values were so high, I also used this package's unique metric, generalized Robinson-Foulds, found in the `TreeDistance` (or `ClusteringInfoDistance`) function, which provides a value more in line with my expectations.
 
 See the R script `getTreeDistances.R`.
+
+# Map figures
+Maps were made using code modified from [Jeremy Davis](https://doi.org/10.1007/s10886-024-01529-3). It was originally meant to use scatterpies but I changed it to just use points. The metadata is in the file `mapmetadata.txt`. The script to generate the maps is `makemap.R`. 
+
+The first few maps try to use every sample, but that's too much data. The third-to-last map is the best variety map, which just does them by sites. The second-to-last map is by ANI species cluster, and the last map is by rhizobial genus. The datapoints are nudged to reduce overlap.
