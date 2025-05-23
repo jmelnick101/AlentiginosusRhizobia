@@ -92,6 +92,9 @@ A Mantel test was also performed to determine if rhizobia genetic distance was c
 The Mantel test was performed with the `mantel` function of the R package "Vegan", as well as a partial Mantel test controlling for geographic distance. 
 There is also unused, commented code for the `mantel.rtest` function of the R package "ade4". See `makeMantel.r`.
 
+### PCoA
+Principal Coordinate Analysis was performed on the rhizobial phylogenetic distance using the R script `makepcoa.R`. To color it by species cluster, download the `clustorder.txt` file.
+
 ## Rhizobia genetic distance X geographic distance
 (Note: since soils and seeds were taken from the same plants, the geographic distance is the same for both the rhizobia and their hosts.)
 
