@@ -16,6 +16,24 @@ con <- read.tree("concatPhylo/RAxML_bipartitions.concatPhylogeny.tre")
 #wgs <- read.tree("JoshuaPhylophlan/allmesogenomes_phylophlan/RAxML_bestTree.allmesogenomes_refined.tre")
 wgs <- read.tree("JoshuaPhylophlan/genomesnobins_phylophlan/boot/RAxML_bipartitions.genomesnobins_boot.tre")
 
+#just mesorhizobium
+#mesowgs <- read.tree("JoshuaPhylophlan/justmeso_phylophlan/boot/RAxML_bipartitions.justmeso_boot.tre")
+#mesosym <- read.tree("justmesosymphylo/RAxML_bipartitions.justmesosym_boot.tre")
+#just allomesorhizobium
+#allowgs <- read.tree("JoshuaPhylophlan/justallo_phylophlan/boot/RAxML_bipartitions.justallo_boot.tre")
+#allosym <- read.tree("justallosymphylo/RAxML_bipartitions.justallosym_boot.tre")
+
+#just mesorhizobium
+#RobinsonFoulds(mesosym,mesowgs,normalize=TRUE)
+#TreeDistance(mesosym,mesowgs)
+#ClusteringInfoDistance(mesosym,mesowgs)
+#ExpectedVariation(mesosym,mesowgs)
+#just allomesorhizobium
+#RobinsonFoulds(allosym,allowgs,normalize=TRUE)
+#TreeDistance(allosym,allowgs)
+#ClusteringInfoDistance(allosym,allowgs)
+#ExpectedVariation(allosym,allowgs)
+
 #normalized Robinson-Foulds distance
 RobinsonFoulds(con,wgs,normalize=TRUE)
 
