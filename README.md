@@ -157,9 +157,9 @@ for i in *; do x=${i%.*}; prokka -outdir ../../JoshuaProkka/finalrun/$x -prefix 
 Symbiosis genes are known to frequently undergo horizontal gene transfer, and are often transmitted together. We can make tanglegrams to visualize how the phylogeny of the symbiosis genes may differ from the overall phylogeny. 
 ## Extraction
 
-Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with Kofamscan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
+Symbiosis genes were occasionaly missing from annotations, so they were extracted directly from the metagenomes by annotating them with KofamScan. The code for that can be found at https://github.com/jpod1010/nodule_metagenomics. 
 
-Genes were located in Kofamscan and matched to proteins using the code in the `getGene.py` file on this repository. Nucleotide data was later obtained with Prodigal to be more precise than amino acids, but the script still runs the same by accessing the Kofamscan locations, you just have to change the input file of the proteins to be your nucleotides.
+Genes were located in KofamScan and matched to proteins using the code in the `getGene.py` file on this repository. Nucleotide data was later obtained with Prodigal to be more precise than amino acids, but the script still runs the same by accessing the KofamScan locations, you just have to change the input file of the proteins to be your nucleotides.
 
 I excluded 19-73C due to it containing a mix of _Rhizobium_ and _Mesorhizobium_, 19-9A because it was _Sinorhizobium_, 19-39C, 19-70G, and 19-81J due to being low quality, the old runs of 19-77J, and 19-41A due to it not detecting _nifH_ even though it detected _nodA_ and _nodB_. I also later removed the "19" from all names.
 
